@@ -18,8 +18,6 @@ class Calendar(object):
         else:
             self.MonthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
-        #set_MonthDays()
-
     @property
     def set_MonthDays(self):
         if(self.Year % 4 == 0 and self.Year % 100 != 0) or self.Year % 400 == 0:
