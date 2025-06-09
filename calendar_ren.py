@@ -12,18 +12,17 @@ class Calendar(object):
         self.Year = Year
         self.Minutes = Minutes
         self.Weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+        self.MonthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
-        if(self.Year % 4 == 0 and self.Year % 100 != 0) or self.Year % 400 == 0:
-            self.MonthDays = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-        else:
-            self.MonthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+        self.set_MonthDays  # Set the correct number of days in February based on leap year
 
+    # Run this when the year changes to ensure February has the correct number of days.
     @property
     def set_MonthDays(self):
         if(self.Year % 4 == 0 and self.Year % 100 != 0) or self.Year % 400 == 0:
-            self.MonthDays = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+            self.MonthDays[1] = 29
         else:
-            self.MonthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+            self.MonthDays[1] = 28
 
     @property
     def check_time(self):
